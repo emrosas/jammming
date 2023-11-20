@@ -1,6 +1,10 @@
 #root {
   max-width: 1440px;
   margin: 0 auto;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .bg-image {
@@ -13,4 +17,21 @@
   left: 0;
   right: 0;
   z-index: -1;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  flex-grow: 1;
+}
+
+#playlist {
+  display: flex;
+  flex-direction: column;
 }

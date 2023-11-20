@@ -1,0 +1,13 @@
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 4rem;
+}
+
+input {
+  max-width: 25rem;
+  min-height: 2rem;
+  border-radius: 0.4rem;
+  padding: 0.25rem 0.5rem;
+}

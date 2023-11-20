@@ -2,7 +2,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: start;
-  padding-top: 2.5rem;
+  padding-top: var(--sp-2-5);
 }
 
 .header-comp {
