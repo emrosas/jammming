@@ -1,15 +1,15 @@
 #root {
   max-width: 1440px;
   margin: 0 auto;
-  height: 100dvh;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
 }
 
 .bg-image {
   background: linear-gradient(180deg, rgba(26, 26, 26, 0.8) 0%, #1a1a1a 100%),
-    url("./assets/bg-image.png"), lightgray 50% / cover no-repeat;
+    url("./assets/bg-image.png"), lightgray 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
   height: 30rem;
   width: 100%;
   position: absolute;
@@ -23,15 +23,26 @@ main {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  height: 100dvh;
 }
 
 .columns {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  gap: 2.5rem;
   flex-grow: 1;
+  position: relative;
+  align-items: start;
 }
 
 #playlist {
   display: flex;
   flex-direction: column;
+  min-height: 25rem;
+  position: sticky;
+  top: 8rem;
+}
+
+#search-section,
+#playlist {
+  flex-grow: 1;
 }

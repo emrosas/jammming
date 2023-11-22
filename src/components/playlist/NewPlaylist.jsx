@@ -1,3 +1,4 @@
+import Song from "../song/Song";
 import "./NewPlaylist.css";
 
 function NewPlaylist() {
@@ -8,9 +9,11 @@ function NewPlaylist() {
         <button>Add Playlist</button>
       </div>
       <div className="playlist-body">
-        <p>Here goes a song</p>
-        <p>Here goes a song</p>
-        <p>Here goes a song</p>
+        <Song />
+        <Song />
+        <Song />
+        <Song />
+        <Song />
       </div>
     </div>
   );
