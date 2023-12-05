@@ -1,15 +1,10 @@
 import "./SearchResults.css";
 import Song from "../song/Song";
 
-function SearchResults() {
+function SearchResults(props) {
   return (
     <div className="container">
-      <Song />
-      <Song />
-      <Song />
-      <Song />
-      <Song />
-      <Song />
+      <Song title="Hard Coded title" artist="Cool Name" album="Suave title" />
     </div>
   );
 }
