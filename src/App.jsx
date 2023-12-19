@@ -11,16 +11,10 @@ function App() {
     <main>
       <div className="bg-image" />
       <Header />
+      <SearchBar />
       <div className="columns">
-        <section id="search-section">
-          <SearchBar />
-          <div className="results-wrapper">
-            <SearchResults results={mockSongs} />
-          </div>
-        </section>
-        <section id="playlist">
-          <NewPlaylist />
-        </section>
+        <SearchResults results={mockSongs} />
+        <NewPlaylist />
       </div>
     </main>
   );
