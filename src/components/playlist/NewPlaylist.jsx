@@ -12,7 +12,7 @@ function NewPlaylist() {
         </button>
       </div>
       <div className="playlist-body">
-        <Song />
+        <Song title="Hard Coded title" artist="Cool Name" album="Suave title" />
       </div>
     </div>
   );

@@ -12,6 +12,7 @@ function App() {
       <div className="bg-image" />
       <Header />
       <SearchBar />
+
       <div className="columns">
         <SearchResults results={mockSongs} />
         <NewPlaylist />
