@@ -7,7 +7,7 @@ import NewPlaylist from "./components/playlist/NewPlaylist";
 import mockSongs from "./mockSongs";
 
 function App() {
-  const [searchTerm, setSearchTerm] = useState("Initial State");
+  const [searchTerm, setSearchTerm] = useState("");
 
   const updateSearchTerm = (newSearch) => {
     setSearchTerm(newSearch);
@@ -18,9 +18,8 @@ function App() {
       <div className="bg-image" />
       <Header />
       <SearchBar updateSearchTerm={updateSearchTerm} />
-      <p>Value in parent: {searchTerm}</p>
       <div className="columns">
-        <SearchResults results={mockSongs} />
+        <SearchResults songs={mockSongs} searchTerm={searchTerm} />
         <NewPlaylist />
       </div>
     </main>
