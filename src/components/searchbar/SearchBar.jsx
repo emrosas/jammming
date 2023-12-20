@@ -2,32 +2,40 @@ import "./SearchBar.css";
 import searchIcon from "../../assets/search-icon.svg";
 import { useState } from "react";
 
-function SearchBar() {
-  const [searchTerm, setSearchTerm] = useState("");
+function SearchBar({ updateSearchTerm }) {
+  const [inputValue, setInputValue] = useState("");
 
-  // Function to handle input change
-  const handleInputChange = (e) => {
-    setSearchTerm(e.target.value);
+  const handleChange = (e) => {
+    const updatedValue = e.target.value;
+    setInputValue(updatedValue);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    updateSearchTerm(inputValue);
+    setInputValue("");
   };
 
   return (
-    <form action="">
-      <input
-        id="search"
-        type="text"
-        placeholder="Search..."
-        value={searchTerm}
-        onChange={handleInputChange}
-      />
-      <button>
-        <img
-          className="icon"
-          src={searchIcon}
-          alt="Magnifying glass with plus sign in the middle"
+    <>
+      <form onSubmit={handleSubmit}>
+        <input
+          id="search"
+          type="text"
+          value={inputValue}
+          placeholder="Search..."
+          onChange={handleChange}
         />
-        Search
-      </button>
-    </form>
+        <button type="submit">
+          <img
+            className="icon"
+            src={searchIcon}
+            alt="Magnifying glass with plus sign in the middle"
+          />
+          Search
+        </button>
+      </form>
+    </>
   );
 }
 

@@ -7,12 +7,18 @@ import NewPlaylist from "./components/playlist/NewPlaylist";
 import mockSongs from "./mockSongs";
 
 function App() {
+  const [searchTerm, setSearchTerm] = useState("Initial State");
+
+  const updateSearchTerm = (newSearch) => {
+    setSearchTerm(newSearch);
+  };
+
   return (
     <main>
       <div className="bg-image" />
       <Header />
-      <SearchBar />
-
+      <SearchBar updateSearchTerm={updateSearchTerm} />
+      <p>Value in parent: {searchTerm}</p>
       <div className="columns">
         <SearchResults results={mockSongs} />
         <NewPlaylist />
