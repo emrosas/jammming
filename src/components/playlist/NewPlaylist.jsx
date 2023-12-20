@@ -2,7 +2,9 @@ import Song from "../song/Song";
 import "./NewPlaylist.css";
 import addPlaylist from "../../assets/add-playlist.svg";
 
-function NewPlaylist() {
+function NewPlaylist({ addedSongs, removeSongFromPlaylist }) {
+  console.log(addedSongs);
+
   return (
     <div className="playlist">
       <div className="playlist-header">
@@ -12,7 +14,15 @@ function NewPlaylist() {
         </button>
       </div>
       <div className="playlist-body">
-        <Song title="Hard Coded title" artist="Cool Name" album="Suave title" />
+        {addedSongs.map((song) => (
+          <Song
+            key={song.id}
+            name={song.name}
+            album={song.album}
+            artist={song.artist}
+            removeSongFromPlaylist={removeSongFromPlaylist}
+          />
+        ))}
       </div>
     </div>
   );

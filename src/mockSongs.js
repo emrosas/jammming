@@ -23,6 +23,18 @@ let mockSongs = [
     album: "Austin",
     id: 4,
   },
+  {
+    name: "Karma",
+    artist: "Taylor Swift",
+    album: "Midnights",
+    id: 5,
+  },
+  {
+    name: "Thunder",
+    artist: "Imagine Dragons",
+    album: "Evolve",
+    id: 6,
+  },
 ];
 
 export default mockSongs;

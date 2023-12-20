@@ -7,10 +7,24 @@ import NewPlaylist from "./components/playlist/NewPlaylist";
 import mockSongs from "./mockSongs";
 
 function App() {
+  //Search funcionality
   const [searchTerm, setSearchTerm] = useState("");
 
   const updateSearchTerm = (newSearch) => {
     setSearchTerm(newSearch);
+  };
+
+  //Selecting songs to add to New Playlist
+  const [addedSongs, setAddedSongs] = useState([]);
+
+  const addSongToPlaylist = (newSong) => {
+    setAddedSongs([...addedSongs, newSong]);
+  };
+
+  const removeSongFromPlaylist = (song) => {
+    const updatedSongs = [...addedSongs];
+    updatedSongs.splice(song, 1);
+    setAddedSongs(updatedSongs);
   };
 
   return (
@@ -19,8 +33,16 @@ function App() {
       <Header />
       <SearchBar updateSearchTerm={updateSearchTerm} />
       <div className="columns">
-        <SearchResults songs={mockSongs} searchTerm={searchTerm} />
-        <NewPlaylist />
+        <SearchResults
+          songs={mockSongs}
+          searchTerm={searchTerm}
+          addSongToPlaylist={addSongToPlaylist}
+          removeSongFromPlaylist={removeSongFromPlaylist}
+        />
+        <NewPlaylist
+          addedSongs={addedSongs}
+          removeSongFromPlaylist={removeSongFromPlaylist}
+        />
       </div>
     </main>
   );

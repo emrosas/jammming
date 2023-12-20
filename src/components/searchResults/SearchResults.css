@@ -11,3 +11,9 @@ h2 {
   margin-bottom: 2rem;
   font-size: 2rem;
 }
+
+.searched {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
