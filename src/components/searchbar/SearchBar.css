@@ -3,7 +3,7 @@ form {
   justify-content: center;
 }
 
-input {
+.search-bar {
   min-width: 25rem;
   min-height: 2rem;
   padding: 0.25rem 0.5rem;
@@ -13,16 +13,25 @@ input {
   color: black;
 }
 
-form button {
+.search-bar:focus {
+  outline: none;
+  border: 1px solid var(--brand);
+}
+
+.search-button {
+  display: flex;
   margin-left: -0.2rem;
   padding: 0.5rem 1.5rem;
   background-color: var(--brand);
   border-radius: 0 0.4rem 0.4rem 0;
   font-size: 1.25rem;
+  gap: 0.5rem;
+  color: white;
+  border: 0;
 }
 
-form button:hover {
-  background-color: #257000;
+.search-button:hover {
+  background-color: green;
 }
 
 .icon {

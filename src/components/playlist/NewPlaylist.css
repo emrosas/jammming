@@ -18,22 +18,39 @@
   align-items: start;
 }
 
-button {
-  background-color: hsla(var(--brand), 1);
+.playlist-name {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--white);
+  background-color: transparent;
+  border-radius: 0;
+  min-width: unset;
+  border: 0;
+}
+
+.playlist-name:focus {
+  outline: none;
+  border-bottom: 1px solid var(--white);
+}
+
+.add-playlist {
+  background-color: var(--brand);
   color: var(--white);
   border-radius: 0.25rem;
   border: 0;
   padding: 0.5rem 0.75rem;
-  font-weight: 500;
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  flex-shrink: 0;
+  font-weight: 500;
+  font-size: 1rem;
 }
 
-button:hover {
-  background-color: hsla(var(--brand), 0.6);
+.add-playlist:hover {
+  background-color: green;
 }
 
-button img {
+.add-playlist img {
   width: 1.25rem;
 }

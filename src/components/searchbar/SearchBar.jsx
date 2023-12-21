@@ -25,8 +25,9 @@ function SearchBar({ updateSearchTerm }) {
           value={inputValue}
           placeholder="Search..."
           onChange={handleChange}
+          className="search-bar"
         />
-        <button type="submit">
+        <button type="submit" className="search-button">
           <img
             className="icon"
             src={searchIcon}
