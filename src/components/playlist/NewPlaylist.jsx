@@ -3,8 +3,6 @@ import "./NewPlaylist.css";
 import addPlaylist from "../../assets/add-playlist.svg";
 
 function NewPlaylist({ addedSongs, removeSongFromPlaylist }) {
-  console.log(addedSongs);
-
   return (
     <div className="playlist">
       <div className="playlist-header">
@@ -14,13 +12,15 @@ function NewPlaylist({ addedSongs, removeSongFromPlaylist }) {
         </button>
       </div>
       <div className="playlist-body">
-        {addedSongs.map((song) => (
+        {addedSongs.map((song, index) => (
           <Song
-            key={song.id}
+            key={index}
             name={song.name}
             album={song.album}
             artist={song.artist}
             removeSongFromPlaylist={removeSongFromPlaylist}
+            index={index}
+            added={true}
           />
         ))}
       </div>

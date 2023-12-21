@@ -26,7 +26,8 @@ main {
 }
 
 .columns {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 2.5rem;
   flex-grow: 1;
   position: relative;

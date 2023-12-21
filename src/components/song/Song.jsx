@@ -4,14 +4,14 @@ import minus from "../../assets/minus.svg";
 
 function Song(props) {
   // let { name, artist, album, addSongToPlaylist } = props;
-  const { addSongToPlaylist, removeSongFromPlaylist, ...song } = props;
+  const { addSongToPlaylist, removeSongFromPlaylist, added, ...song } = props;
 
   const handleAdd = () => {
     addSongToPlaylist(song);
   };
 
   const handleRemove = () => {
-    removeSongFromPlaylist(song);
+    removeSongFromPlaylist(song.index);
   };
 
   return (
@@ -22,12 +22,16 @@ function Song(props) {
           {song.artist} | {song.album}
         </p>
       </div>
-      <button className="song-button" onClick={handleAdd}>
-        <img src={plus} alt="Plus sign" />
-      </button>
-      <button className="song-button" onClick={handleRemove}>
-        <img src={minus} alt="Plus sign" />
-      </button>
+
+      {added ? (
+        <button className="song-button" onClick={handleRemove}>
+          <img src={minus} alt="Plus sign" />
+        </button>
+      ) : (
+        <button className="song-button" onClick={handleAdd}>
+          <img src={plus} alt="Plus sign" />
+        </button>
+      )}
     </div>
   );
 }

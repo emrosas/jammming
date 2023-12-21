@@ -21,9 +21,9 @@ function App() {
     setAddedSongs([...addedSongs, newSong]);
   };
 
-  const removeSongFromPlaylist = (song) => {
+  const removeSongFromPlaylist = (index) => {
     const updatedSongs = [...addedSongs];
-    updatedSongs.splice(song, 1);
+    updatedSongs.splice(index, 1);
     setAddedSongs(updatedSongs);
   };
 
