@@ -18,8 +18,12 @@ function App() {
   const [addedSongs, setAddedSongs] = useState([]);
 
   const addSongToPlaylist = (newSong) => {
-    setAddedSongs([...addedSongs, newSong]);
+    if (!addedSongs.some((song) => song.id === newSong.id)) {
+      setAddedSongs([...addedSongs, newSong]);
+    }
   };
+
+  console.log(addedSongs);
 
   const removeSongFromPlaylist = (index) => {
     const updatedSongs = [...addedSongs];

@@ -16,7 +16,7 @@ function NewPlaylist({ addedSongs, removeSongFromPlaylist }) {
       playlistName,
       songs: addedSongs,
     };
-    console.log(playlistData);
+    console.log(JSON.stringify(playlistData));
   };
 
   return (

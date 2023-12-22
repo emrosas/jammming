@@ -2,7 +2,7 @@ import "./SearchResults.css";
 import Song from "../song/Song";
 
 function SearchResults(props) {
-  let { songs, searchTerm, addSongToPlaylist, removeSongFromPlaylist } = props;
+  let { songs, searchTerm, addSongToPlaylist } = props;
   const results = songs.filter(
     (song) =>
       song.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -23,11 +23,11 @@ function SearchResults(props) {
         results.map((song) => (
           <Song
             key={song.id}
+            id={song.id}
             name={song.name}
             artist={song.artist}
             album={song.album}
             addSongToPlaylist={addSongToPlaylist}
-            removeSongFromPlaylist={removeSongFromPlaylist}
           />
         ))
       ) : (
