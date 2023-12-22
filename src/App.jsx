@@ -14,8 +14,21 @@ function App() {
     setSearchTerm(newSearch);
   };
 
+  //New Playlist name
+  const [playlistName, setPlaylistName] = useState("New Playlist Name");
+
+  const resetPlaylistName = () => {
+    setPlaylistName("");
+  };
+
+  const playlistNamePlaceholder = () => {
+    setPlaylistName("New Playlist Name");
+  };
+
   //Selecting songs to add to New Playlist
   const [addedSongs, setAddedSongs] = useState([]);
+  //Getting the added songs URI property
+  const addedSongsURI = addedSongs.map((song) => song.uri);
 
   const addSongToPlaylist = (newSong) => {
     if (!addedSongs.some((song) => song.id === newSong.id)) {
@@ -23,12 +36,14 @@ function App() {
     }
   };
 
-  console.log(addedSongs);
-
   const removeSongFromPlaylist = (index) => {
     const updatedSongs = [...addedSongs];
     updatedSongs.splice(index, 1);
     setAddedSongs(updatedSongs);
+  };
+
+  const resetPlaylist = () => {
+    setAddedSongs([]);
   };
 
   return (
@@ -41,11 +56,16 @@ function App() {
           songs={mockSongs}
           searchTerm={searchTerm}
           addSongToPlaylist={addSongToPlaylist}
-          removeSongFromPlaylist={removeSongFromPlaylist}
         />
         <NewPlaylist
           addedSongs={addedSongs}
           removeSongFromPlaylist={removeSongFromPlaylist}
+          addedSongsURI={addedSongsURI}
+          resetPlaylist={resetPlaylist}
+          playlistName={playlistName}
+          resetPlaylistName={resetPlaylistName}
+          setPlaylistName={setPlaylistName}
+          playlistNamePlaceholder={playlistNamePlaceholder}
         />
       </div>
     </main>

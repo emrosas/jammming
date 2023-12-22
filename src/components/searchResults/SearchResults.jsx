@@ -23,8 +23,9 @@ function SearchResults(props) {
         results.map((song) => (
           <Song
             key={song.id}
-            id={song.id}
             name={song.name}
+            id={song.id}
+            uri={song.uri}
             artist={song.artist}
             album={song.album}
             addSongToPlaylist={addSongToPlaylist}

@@ -3,20 +3,25 @@ import Song from "../song/Song";
 import "./NewPlaylist.css";
 import search from "../../assets/search-icon.svg";
 
-function NewPlaylist({ addedSongs, removeSongFromPlaylist }) {
-  const [playlistName, setPlaylistName] = useState("New Playlist Name");
-
-  const handleClick = () => {
-    setPlaylistName("");
-  };
-
+function NewPlaylist({
+  addedSongs,
+  addedSongsURI,
+  playlistName,
+  setPlaylistName,
+  removeSongFromPlaylist,
+  resetPlaylist,
+  resetPlaylistName,
+  playlistNamePlaceholder,
+}) {
   const addPlaylist = () => {
     //Add playlist to database
     const playlistData = {
       playlistName,
-      songs: addedSongs,
+      songs: addedSongsURI,
     };
     console.log(JSON.stringify(playlistData));
+    playlistNamePlaceholder();
+    resetPlaylist();
   };
 
   return (
@@ -27,7 +32,7 @@ function NewPlaylist({ addedSongs, removeSongFromPlaylist }) {
           type="text"
           value={playlistName}
           onChange={(e) => setPlaylistName(e.target.value)}
-          onClick={handleClick}
+          onClick={resetPlaylistName}
         />
         <button className="add-playlist" onClick={addPlaylist}>
           Add Playlist <img src={search} alt="Playlist and plus sign" />
