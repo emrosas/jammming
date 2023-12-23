@@ -4,6 +4,7 @@ import signIn from "../../assets/sign-in.svg";
 import { useEffect } from "react";
 
 function Header() {
+  let userData = JSON.parse(localStorage.getItem("user_data"));
   function generateRandomString(length) {
     const possible =
       "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -67,12 +68,25 @@ function Header() {
   return (
     <header>
       {/* Sign in Component */}
-      <div className="sign-in">
-        <div className="sign-in-button" onClick={loginWithSpotify}>
-          <p className="sign-in-text  medium-text">Sign In</p>
-          <img src={signIn} alt="Sign In Icon" className="sign-in-icon" />
+      {userData ? (
+        <div className="sign-in">
+          <div className="user-info">
+            <p className="user-name">{userData.display_name}</p>
+            <img
+              src={userData.images[0].url}
+              alt="User Profile"
+              className="user-profile"
+            />
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="sign-in">
+          <div className="sign-in-button" onClick={loginWithSpotify}>
+            <p className="sign-in-text  medium-text">Sign In</p>
+            <img src={signIn} alt="Sign In Icon" className="sign-in-icon" />
+          </div>
+        </div>
+      )}
       {/* Header with logo and description */}
       <div className="header-comp">
         <a href="/" className="header-link">

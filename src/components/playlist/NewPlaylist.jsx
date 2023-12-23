@@ -12,6 +12,7 @@ function NewPlaylist({
   resetPlaylist,
   resetPlaylistName,
   playlistNamePlaceholder,
+  // userData,
 }) {
   const addPlaylist = () => {
     //Add playlist to database
@@ -23,6 +24,8 @@ function NewPlaylist({
     playlistNamePlaceholder();
     resetPlaylist();
   };
+
+  // console.log(userData);
 
   return (
     <div className="playlist">
