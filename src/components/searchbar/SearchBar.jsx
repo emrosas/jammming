@@ -2,7 +2,7 @@ import "./SearchBar.css";
 import searchIcon from "../../assets/search-icon.svg";
 import { useState } from "react";
 
-function SearchBar({ updateSearchTerm }) {
+function SearchBar({ newSearch }) {
   const [inputValue, setInputValue] = useState("");
 
   const handleChange = (e) => {
@@ -12,7 +12,7 @@ function SearchBar({ updateSearchTerm }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    updateSearchTerm(inputValue);
+    newSearch(inputValue);
     setInputValue("");
   };
 

@@ -7,11 +7,29 @@ import NewPlaylist from "./components/playlist/NewPlaylist";
 import mockSongs from "./mockSongs";
 
 function App() {
+  console.log(localStorage.getItem("spotify_access_token"));
   //Search funcionality
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState("");
 
-  const updateSearchTerm = (newSearch) => {
-    setSearchTerm(newSearch);
+  const newSearch = (search) => {
+    searchSongs(search).then((songs) => {
+      setSearchResults(songs);
+    });
+  };
+
+  const searchSongs = (query) => {
+    const accessToken = localStorage.getItem("spotify_access_token");
+    const url = `https://api.spotify.com/v1/search?type=track&q=${encodeURIComponent(
+      query
+    )}`;
+
+    return fetch(url, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => data.tracks.items);
   };
 
   //New Playlist name
@@ -50,11 +68,10 @@ function App() {
     <main>
       <div className="bg-image" />
       <Header />
-      <SearchBar updateSearchTerm={updateSearchTerm} />
+      <SearchBar newSearch={newSearch} />
       <div className="columns">
         <SearchResults
-          songs={mockSongs}
-          searchTerm={searchTerm}
+          songs={searchResults}
           addSongToPlaylist={addSongToPlaylist}
         />
         <NewPlaylist
