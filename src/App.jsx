@@ -7,7 +7,6 @@ import NewPlaylist from "./components/playlist/NewPlaylist";
 import mockSongs from "./mockSongs";
 
 function App() {
-  console.log(localStorage.getItem("spotify_access_token"));
   //Search funcionality
   const [searchResults, setSearchResults] = useState("");
 
