@@ -5,6 +5,7 @@ import { useEffect } from "react";
 
 function Header() {
   let userData = JSON.parse(localStorage.getItem("user_data"));
+
   function generateRandomString(length) {
     const possible =
       "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -33,6 +34,13 @@ function Header() {
     url += "&state=" + encodeURIComponent(state);
 
     window.location = url;
+  };
+
+  const logoutOfSpotify = () => {
+    localStorage.removeItem("spotify_access_token");
+    localStorage.removeItem("user_data");
+    localStorage.removeItem("spotify_auth_state");
+    window.location = "/";
   };
 
   //Checks for access token in URL
@@ -69,16 +77,25 @@ function Header() {
     <header>
       {/* Sign in Component */}
       {userData ? (
-        <div className="sign-in">
-          <div className="user-info">
-            <p className="user-name">{userData.display_name}</p>
-            <img
-              src={userData.images[0].url}
-              alt="User Profile"
-              className="user-profile"
-            />
+        !userData.error ? (
+          <div className="sign-in">
+            <div className="user-info" onClick={logoutOfSpotify}>
+              <p className="user-name">{userData.display_name}</p>
+              <img
+                src={userData.images[0].url}
+                alt="User Profile"
+                className="user-profile"
+              />
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="sign-in">
+            <div className="sign-in-button" onClick={loginWithSpotify}>
+              <p className="sign-in-text  medium-text">Sign In</p>
+              <img src={signIn} alt="Sign In Icon" className="sign-in-icon" />
+            </div>
+          </div>
+        )
       ) : (
         <div className="sign-in">
           <div className="sign-in-button" onClick={loginWithSpotify}>

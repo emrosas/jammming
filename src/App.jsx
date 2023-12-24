@@ -6,6 +6,8 @@ import SearchResults from "./components/searchResults/SearchResults";
 import NewPlaylist from "./components/playlist/NewPlaylist";
 
 function App() {
+  //Add new state for error handling
+  const [error, setError] = useState(null);
   //Requests the user's data from the Spotify API
   useEffect(() => {
     const accessToken = localStorage.getItem("spotify_access_token");
@@ -14,8 +16,15 @@ function App() {
         Authorization: `Bearer ${accessToken}`,
       },
     })
-      .then((res) => res.json())
-      .then((data) => localStorage.setItem("user_data", JSON.stringify(data)));
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => localStorage.setItem("user_data", JSON.stringify(data)))
+      //handles the error if it is thrown
+      .catch((error) => setError(error));
   }, []);
 
   //Holds the search results
