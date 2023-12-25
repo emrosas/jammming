@@ -3,9 +3,7 @@ import logo from "../../assets/logo.svg";
 import signIn from "../../assets/sign-in.svg";
 import { useEffect } from "react";
 
-function Header() {
-  let userData = JSON.parse(localStorage.getItem("user_data"));
-
+function Header({ userData }) {
   function generateRandomString(length) {
     const possible =
       "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";

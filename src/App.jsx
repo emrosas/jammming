@@ -8,6 +8,7 @@ import NewPlaylist from "./components/playlist/NewPlaylist";
 function App() {
   //Add new state for error handling
   const [error, setError] = useState(null);
+  const [userData, setUserData] = useState(null);
   //Requests the user's data from the Spotify API
   useEffect(() => {
     const accessToken = localStorage.getItem("spotify_access_token");
@@ -22,7 +23,7 @@ function App() {
         }
         return response.json();
       })
-      .then((data) => localStorage.setItem("user_data", JSON.stringify(data)))
+      .then((data) => setUserData(data))
       //handles the error if it is thrown
       .catch((error) => setError(error));
   }, []);
@@ -86,7 +87,7 @@ function App() {
   return (
     <main>
       <div className="bg-image" />
-      <Header />
+      <Header userData={userData} />
       <SearchBar newSearch={newSearch} />
       <div className="columns">
         <SearchResults
