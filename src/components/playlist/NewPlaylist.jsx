@@ -12,20 +12,33 @@ function NewPlaylist({
   resetPlaylist,
   resetPlaylistName,
   playlistNamePlaceholder,
-  // userData,
+  userData,
 }) {
   const addPlaylist = () => {
-    //Add playlist to database
     const playlistData = {
-      playlistName,
-      songs: addedSongsURI,
+      name: playlistName,
+      description: "New playlist description",
+      public: true,
     };
-    console.log(JSON.stringify(playlistData));
+
+    const accessToken = localStorage.getItem("spotify_access_token");
+
+    // //POST request to /v1/users/{user_id}/playlists endpoint
+    fetch(`https://api.spotify.com/v1/users/${userData.id}/playlists`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+      body: JSON.stringify(playlistData),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error("Error:", error));
+
     playlistNamePlaceholder();
     resetPlaylist();
   };
-
-  // console.log(userData);
 
   return (
     <div className="playlist">

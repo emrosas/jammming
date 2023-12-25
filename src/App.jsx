@@ -103,7 +103,7 @@ function App() {
           resetPlaylistName={resetPlaylistName}
           setPlaylistName={setPlaylistName}
           playlistNamePlaceholder={playlistNamePlaceholder}
-          // userData={userData}
+          userData={userData}
         />
       </div>
     </main>
