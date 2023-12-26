@@ -87,7 +87,7 @@ function App() {
   return (
     <main>
       <div className="bg-image" />
-      <Header userData={userData} />
+      <Header userData={userData} setUserData={setUserData} />
       <SearchBar newSearch={newSearch} />
       <div className="columns">
         <SearchResults

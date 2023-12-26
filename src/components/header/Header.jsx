@@ -3,7 +3,7 @@ import logo from "../../assets/logo.svg";
 import signIn from "../../assets/sign-in.svg";
 import { useEffect } from "react";
 
-function Header({ userData }) {
+function Header({ userData, setUserData }) {
   function generateRandomString(length) {
     const possible =
       "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -36,7 +36,7 @@ function Header({ userData }) {
 
   const logoutOfSpotify = () => {
     localStorage.removeItem("spotify_access_token");
-    localStorage.removeItem("user_data");
+    setUserData(null);
     localStorage.removeItem("spotify_auth_state");
     window.location = "/";
   };
