@@ -54,3 +54,16 @@
 .add-playlist img {
   width: 1.25rem;
 }
+
+.clear-button {
+  color: hsla(0, 0, 80, 1);
+  background-color: hsla(0, 50%, 50%, 0.5);
+  border: 0;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.25rem;
+}
+
+.clear-button:hover {
+  background-color: hsla(0, 50%, 50%, 1);
+  color: hsla(0, 0, 100, 1);
+}

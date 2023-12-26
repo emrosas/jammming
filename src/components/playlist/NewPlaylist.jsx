@@ -33,10 +33,34 @@ function NewPlaylist({
       body: JSON.stringify(playlistData),
     })
       .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        const playlistID = data.id;
+        const uriList = {
+          uris: addedSongsURI,
+        };
+        //POST request to /v1/users/{user_id}/playlists/{playlist_id}/tracks endpoint
+        return fetch(
+          `https://api.spotify.com/v1/users/${userData.id}/playlists/${playlistID}/tracks`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${accessToken}`,
+            },
+            body: JSON.stringify(uriList),
+          }
+        );
+      })
+      .then((response) => response.json())
       .then((data) => console.log(data))
       .catch((error) => console.error("Error:", error));
 
     playlistNamePlaceholder();
+    resetPlaylist();
+  };
+
+  const clearSongs = () => {
     resetPlaylist();
   };
 
@@ -69,6 +93,11 @@ function NewPlaylist({
           ))
         ) : (
           <p>No Songs Added.</p>
+        )}
+        {addedSongs.length > 0 && (
+          <button onClick={clearSongs} className="clear-button">
+            Clear
+          </button>
         )}
       </div>
     </div>
